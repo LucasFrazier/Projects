@@ -1,0 +1,10 @@
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\obj\Debug\NationalParkCLI.csprojAssemblyReference.cache
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\obj\Debug\NationalParkCLI.csproj.CoreCompileInputs.cache
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\bin\Debug\NationalParkCLI.exe.config
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\bin\Debug\NationalParkCLI.exe
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\bin\Debug\NationalParkCLI.pdb
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\bin\Debug\NationalPark.dll
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\bin\Debug\NationalPark.pdb
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\obj\Debug\NationalParkCLI.csproj.CopyComplete
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\obj\Debug\NationalParkCLI.exe
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\NationalParkCLI\obj\Debug\NationalParkCLI.pdb

@@ -1,0 +1,4 @@
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\Capstone.Tests\obj\Debug\NationalPark.IntegrationTests.csprojAssemblyReference.cache
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\Capstone.Tests\obj\Debug\NationalPark.IntegrationTests.csproj.CoreCompileInputs.cache
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\Capstone.Tests\obj\Debug\Capstone.Tests.dll
+C:\Workspace\team\week-6-pair-exercises-team-6\capstone\Capstone.Tests\obj\Debug\Capstone.Tests.pdb
