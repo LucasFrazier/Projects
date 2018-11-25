@@ -1,0 +1,2 @@
+C:\Workspace\team\week-9-pair-exercises-team-4\Capstone\UnitTestProject1\obj\Debug\UnitTestProject1.csprojAssemblyReference.cache
+C:\Workspace\team\week-9-pair-exercises-team-4\Capstone\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CoreCompileInputs.cache
