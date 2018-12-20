@@ -10,27 +10,47 @@ using System.Web.Mvc;
 namespace Capstone.Web.Controllers
 {
     /// <summary>
-    /// 
+    /// The default and only controller for this project.
+    /// We're using dependency injection to connect to the database, "NPGeek".
     /// </summary>
     public class HomeController : Controller
     {
-        private const string tempTypekey = "tempType";
-        private const string parkCodeKey = "parkCode";
-
+        //member variable used as key in session data
+        private const string _tempTypekey = "tempType";
+        //member variable used as key in session data
+        private const string _parkCodeKey = "parkCode";
+        //member variable used for database dependency injection
         private INPGeekDAL _dal = null;
 
+        /// <summary>
+        /// Constructor. Establishes dependency injection of database, "NPGeek".
+        /// </summary>
+        /// <param name="dal">Data Access Layer</param>
         public HomeController(INPGeekDAL dal)
         {
             _dal = dal;
         }
 
+        // GET: Home/Index
+        /// <summary>
+        /// Loads default view, "Index".
+        /// Passes it a list of what it needs to populate the view as "model".
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Index()
         {
+            //Model gets populated by dal method.
             IList<IndexViewModel> model = _dal.GetParksForHomePage();
             return View("Index", model);
         }
 
+        // GET: Home/Detail
+        /// <summary>
+        /// Returns the Detail View of a Park determined by the parkCode passed in by the user.
+        /// </summary>
+        /// <param name="parkCode">Passed in from clicking on photo in Index View.</param>
+        /// <returns>Detail View populated with chosen park's information</returns>
         [HttpGet]
         public ActionResult Detail(string parkCode)
         {
@@ -38,13 +58,13 @@ namespace Capstone.Web.Controllers
             model.ParkDetails = _dal.GetAllDetailsByParkCode(parkCode);
             model.FiveDayForecast = _dal.GetFiveDayForecast(parkCode);
 
-            //save the park code of the detail view the user navigates to
-            Session[parkCodeKey] = model.ParkDetails.ParkCode;
+            //Save the park code of the detail view the user navigates to
+            Session[_parkCodeKey] = model.ParkDetails.ParkCode;
 
-            //pull current temperature unit of measurement
-            string sessionTempType = Session[tempTypekey] as string;
+            //Pull current temperature unit of measurement
+            string sessionTempType = Session[_tempTypekey] as string;
             
-            //check current temperature unit to display
+            //Check current temperature unit to display
             if (sessionTempType != null && sessionTempType == "Celsius")
             {
                 model.TempType = sessionTempType;
@@ -52,23 +72,29 @@ namespace Capstone.Web.Controllers
             }
             else
             {
-                Session[tempTypekey] = model.TempType;
+                Session[_tempTypekey] = model.TempType;
             }
 
             return View("Detail", model);
         }
 
+        //POST:Home/DetailTempUpdate
+        /// <summary>
+        /// Updates user chosen temperature type on session data.
+        /// </summary>
         [HttpPost]
         public ActionResult DetailTempUpdate(string tempType)
         {
-            string sessionParkCode = Session[parkCodeKey] as string;
-            Session[tempTypekey] = tempType;            
+            string sessionParkCode = Session[_parkCodeKey] as string;
+            Session[_tempTypekey] = tempType;            
 
             return Detail(sessionParkCode);
         }
 
         // GET: Home/Survey
-        // Return the empty survey view
+        /// <summary>
+        /// Returns the empty Survey View
+        /// </summary>
         [HttpGet]
         public ActionResult Survey()
         {
@@ -76,8 +102,10 @@ namespace Capstone.Web.Controllers
         }
 
         // POST: Home/Survey
-        // Validate the model and redirect to SurveyResults (if successful) or return the 
-        // Survey view (if validation fails)        
+        /// <summary>
+        /// Validate the model and redirect to SurveyResults (if successful) or return the
+        /// Survey view (if validation fails)
+        /// </summary>
         [HttpPost]
         public ActionResult Survey(SurveyViewModel model)
          {
@@ -102,7 +130,10 @@ namespace Capstone.Web.Controllers
         }
 
         // GET: Home/SurveyResults
-        // Return the empty survey view
+        /// <summary>
+        /// Returns view of favorite parks by user votes from surveys
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult SurveyResults()
         {
@@ -110,6 +141,9 @@ namespace Capstone.Web.Controllers
             return View("SurveyResults", model);
         }
 
+        /// <summary>
+        /// Converts fahrenheit to celsius for all forecast days passed in.
+        /// </summary>
         private IList<ForecastDay> ConvertToCelsius(IList<ForecastDay> fiveDayForecast)
         {
             IList<ForecastDay> updatedForecast = new List<ForecastDay>();
